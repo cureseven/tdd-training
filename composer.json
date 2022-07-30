@@ -1,0 +1,24 @@
+{
+    "name": "cureseven/tdd-traning",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cureseven",
+            "email": "shiningcureseven@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Money\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Money\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
