@@ -4,7 +4,7 @@ namespace Money;
 
 class Dollar
 {
-    public $amount;
+    private $amount;
     /**
      * @param int $int
      */
