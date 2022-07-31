@@ -2,9 +2,8 @@
 
 namespace Money;
 
-class Dollar
+class Dollar extends Money
 {
-    private $amount;
     /**
      * @param int $int
      */
@@ -16,10 +15,5 @@ class Dollar
     public function times(int $multiplier)
     {
         return new Dollar($this->amount * $multiplier);
-    }
-
-    public function equals(Dollar $dollar)
-    {
-        return $this->amount === $dollar->amount;
     }
 }
