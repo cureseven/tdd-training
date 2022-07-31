@@ -6,8 +6,8 @@ class Money
 {
     protected $amount;
 
-    public function equals(self $object)
+    public function equals(self $money)
     {
-        return $this->amount === $object->amount;
+        return $this->amount === $money->amount && $this::class == $money::class;
     }
 }
