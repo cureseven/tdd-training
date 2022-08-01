@@ -13,24 +13,24 @@ class Money
         $this->currency = $currency;
     }
 
-    public function times(int $multiplier)
+    public function times(int $multiplier): Money
     {
-        return null;
+        return new Money($this->amount * $multiplier, $this->currency);
     }
 
     public static function dollar(int $amount)
     {
-        return new Dollar($amount, "USD");
+        return new Money($amount, "USD");
     }
 
     public static function franc(int $amount)
     {
-        return new Franc($amount, "CHF");
+        return new Money($amount, "CHF");
     }
 
     public function equals(self $money)
     {
-        return $this->amount === $money->amount && $this->currency == $money->currency;
+        return $this->amount === $money->amount && $this->currency() === $money->currency();
     }
 
     public function currency(): string{
