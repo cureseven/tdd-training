@@ -7,6 +7,8 @@ namespace Money\Tests;
 use Money\Bank;
 use Money\Money;
 use Money\Sum;
+use PhpParser\Node\Expr\BitwiseNot;
+use PhpParser\Node\Expr\Cast\Object_;
 use PHPUnit\Framework\TestCase;
 
 class MoneyTest extends TestCase
@@ -63,5 +65,25 @@ class MoneyTest extends TestCase
         $bank = new Bank();
         $result = $bank->reduce(Money::dollar(1), "USD");
         $this->assertEquals(Money::dollar(1), $result);
+    }
+
+    public function testReduceMoneyDifferentCurrenccy()
+    {
+        $bank = new Bank();
+        $bank->addRate("CHF", "USD", 2);
+        $result = $bank->reduce(Money::franc(2), "USD");
+        $this->assertEquals(Money::dollar(1), $result);
+    }
+
+    public function testArrayEquals()
+    {
+        $obj1 = (object) array("abc");
+        $obj2 = (object) array("abc");
+        $this->assertTrue($obj1 == $obj2);
+    }
+
+    public function testIdentityRate()
+    {
+        $this->assertEquals(1, (new Bank())->rate("USD", "USD"));
     }
 }
