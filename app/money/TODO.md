@@ -21,3 +21,6 @@
 - [ ] $5 + $5 = $10
 - [x] Imposterパターンを調べる
 - [ ] $5 + $5 がMoneyを返す
+- [x] Bank.reduce(Money)
+- [ ] Moneyを変換して換算を行う
+- [ ] Reduce(Bank, String)
