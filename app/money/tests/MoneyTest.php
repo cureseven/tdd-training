@@ -75,15 +75,18 @@ class MoneyTest extends TestCase
         $this->assertEquals(Money::dollar(1), $result);
     }
 
-//    public function testArrayEquals()
-//    {
-//        $obj1 = (object) array("abc");
-//        $obj2 = (object) array("abc");
-//        $this->assertTrue($obj1 === $obj2);
-//    }
-
     public function testIdentityRate()
     {
         $this->assertEquals(1, (new Bank())->rate("USD", "USD"));
+    }
+
+    public function testMixAddition()
+    {
+        $fiveBucks = Money::dollar(5);
+        $tenFrancs = Money::franc(10);
+        $bank = new Bank();
+        $bank->addRate("CHF", "USD", 2);
+        $result = $bank->reduce($fiveBucks->plus($tenFrancs), "USD");
+        $this->assertEquals(Money::dollar(10), $result);
     }
 }

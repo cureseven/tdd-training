@@ -22,11 +22,6 @@ class Money implements Expression
         return $this->currency;
     }
 
-    public function times(int $multiplier): Money
-    {
-        return new Money($this->amount * $multiplier, $this->currency);
-    }
-
     public static function dollar(int $amount)
     {
         return new Money($amount, "USD");
@@ -35,6 +30,11 @@ class Money implements Expression
     public static function franc(int $amount)
     {
         return new Money($amount, "CHF");
+    }
+
+    public function times(int $multiplier): Expression
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
     }
 
     public function equals(self $money)
@@ -47,12 +47,12 @@ class Money implements Expression
         return $this->amount . " " . $this->currency;
     }
 
-    public function plus(Money $addend): Expression
+    public function plus(Expression $addend): Expression
     {
         return new Sum($this, $addend);
     }
 
-    public function reduce(Bank $bank, string $to): Money
+    public function reduce(Bank $bank, string $to): Expression
     {
         $rate = $bank->rate($this->currency, $to);
         return new Money($this->amount / $rate, $to);

@@ -5,7 +5,7 @@ namespace Money;
 class Bank
 {
     private $rates = [];
-    public function reduce(Expression $source, string $to): Money
+    public function reduce(Expression $source, string $to): Expression
     {
         return $source->reduce($this, $to);
     }
