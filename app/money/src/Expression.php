@@ -2,7 +2,7 @@
 
 namespace Money;
 
-class Expression
+interface Expression
 {
-
+    public function reduce(string $to): Money;
 }
