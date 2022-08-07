@@ -2,7 +2,7 @@
 
 namespace Money;
 
-class Money extends Expression
+class Money implements Expression
 {
     protected int $amount;
     protected string $currency;
@@ -42,8 +42,8 @@ class Money extends Expression
         return $this->amount . " " . $this->currency;
     }
 
-    public function plus(Money $added): Expression
+    public function plus(Money $addend): Expression
     {
-        return new Money($this->amount + $added->amount, $this->currency);
+        return new Sum($this, $addend);
     }
 }
