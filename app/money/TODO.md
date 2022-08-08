@@ -17,7 +17,7 @@
 
 ---
 
-- [ ] $5 + 10 CHF = $10(レートが2:1の場合)
+- [x] $5 + 10 CHF = $10(レートが2:1の場合)
 - [x] $5 + $5 = $10
 - [x] Imposterパターンを調べる
 - [ ] $5 + $5 がMoneyを返す
@@ -25,5 +25,5 @@
 - [x] Moneyを変換して換算を行う
 - [x] Reduce(Bank, String)
 - [ ] Compositeパターンを調べる
-- [ ] Sum.plus
-- [ ] Expression.times
+- [x] Sum.plus
+- [x] Expression.times
