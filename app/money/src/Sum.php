@@ -19,9 +19,13 @@ class Sum implements Expression
         return new Money($amount, $to);
     }
 
-    public function plus(Expression $addend): ?Expression
+    public function plus(Expression $addend): Expression
     {
-        // TODO: Implement plus() method.
-        return null;
+        return new Sum($this, $addend);
+    }
+
+    public function times(int $multipiler): Expression
+    {
+        return new Sum($this->augend->times($multipiler), $this->addend->times($multipiler));
     }
 }
