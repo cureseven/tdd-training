@@ -7,6 +7,8 @@ class TestCase:
         self.setUp()
         method = getattr(self, self.name)
         method()
+    def tearDown(self):
+        pass
 
 class WasRun(TestCase):
     def setUp(self):
